@@ -1,6 +1,6 @@
 {
-  "name": "opensauce-react",
-  "version": "1.0.0",
+  "name": "opensauce-component",
+  "version": "1.0.1",
   "type": "module",
   "files": [
     "dist"
@@ -12,7 +12,9 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "npm run clean && rollup -c",
-    "dev": "npm run clean && rollup -c -w"
+    "dev": "npm run clean && rollup -c -w",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "repository": {
     "type": "git",
@@ -25,10 +27,18 @@
   },
   "homepage": "https://opensauce.vercel.app",
   "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.4",
     "@rollup/plugin-commonjs": "^25.0.0",
     "@rollup/plugin-node-resolve": "^15.0.0",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.0.0",
+    "@storybook/addon-essentials": "^8.5.1",
+    "@storybook/addon-interactions": "^8.5.1",
+    "@storybook/addon-onboarding": "^8.5.1",
+    "@storybook/blocks": "^8.5.1",
+    "@storybook/react": "^8.5.1",
+    "@storybook/react-vite": "^8.5.1",
+    "@storybook/test": "^8.5.1",
     "@types/react": "^19.0.8",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.5.1",
@@ -38,12 +48,17 @@
     "rollup": "^3.29.5",
     "rollup-plugin-dts": "^6.1.1",
     "rollup-plugin-postcss": "^4.0.2",
-    "tailwindcss": "^4.0.0",
+    "storybook": "^8.5.1",
+    "tailwindcss": "^2.2.0",
     "tslib": "^2.8.1",
     "typescript": "^5.7.3"
   },
   "peerDependencies": {
     "react": ">=16",
     "react-dom": ">=16"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss7-compat": "^2.2.17",
+    "lucide-react": "^0.474.0"
   }
 }

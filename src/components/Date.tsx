@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/tailwind.css";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
 const Dates: React.FC<{ className?: string }> = ({ className = "" }) => {
@@ -90,7 +91,8 @@ const Dates: React.FC<{ className?: string }> = ({ className = "" }) => {
       <div className="flex mt-3 w-full flex-wrap ml-1">
         {dayOfWeek.map((_, index) => (
           <div
-            className="capitalize font-inter text-[13px] font-bold w-[14%] mb-2 flex justify-center"
+            className="capitalize font-inter text-[13px] font-bold mb-2 flex justify-center"
+            style={{ width: "calc(100%/7)" }}
             key={index}
           >
             <p></p>
@@ -98,7 +100,8 @@ const Dates: React.FC<{ className?: string }> = ({ className = "" }) => {
         ))}
         {days.map((day, index) => (
           <div
-            className="capitalize font-inter text-[13px] font-bold w-[14%] mb-2 flex justify-center"
+            className="capitalize font-inter text-[13px] font-bold  mb-2 flex justify-center"
+            style={{ width: "calc(100%/7)" }}
             key={index}
           >
             <p>{day}</p>
@@ -110,11 +113,11 @@ const Dates: React.FC<{ className?: string }> = ({ className = "" }) => {
 
   return (
     <div
-      className={`flex py-4 flex-col items-center justify-between px-2 border-solid border ${className} min-h-64`}
+      className={`flex py-4 flex-col items-center justify-between px-6 border-solid border ${className} min-h-64`}
       style={{ border: `1px solid grey` }}
     >
       <div className="flex w-full items-center justify-between">
-        <h3 className="capitalize font-black font-inter text-sm ml-3">{`${monthsOfTheYear[currentMonthState]} ${currentYearState}`}</h3>
+        <h3 className="capitalize font-black font-inter md:w-widthOne text-sm  my-auto mx-0 flex justify-center">{`${monthsOfTheYear[currentMonthState]} ${currentYearState}`}</h3>
         <div className="flex gap-4 mr-3">
           <ChevronLeft className=" cursor-pointer" onClick={backwardClick} />
           <ChevronRight className=" cursor-pointer" onClick={forwardClick} />
@@ -122,25 +125,46 @@ const Dates: React.FC<{ className?: string }> = ({ className = "" }) => {
       </div>
 
       <div className="flex mt-4 w-full flex-wrap">
-        <div className="capitalize font-inter text-[13px] font-bold w-[14.2%] flex justify-center">
+        <div
+          className="capitalize font-inter text-[13px] font-bold  flex justify-center"
+          style={{ width: "calc(100%/7)" }}
+        >
           <p>mon</p>
         </div>
-        <div className="capitalize font-inter text-[13px] font-bold w-[14.2%] flex justify-center">
+        <div
+          className="capitalize font-inter text-[13px] font-bold  flex justify-center"
+          style={{ width: "calc(100%/7)" }}
+        >
           <p>tue</p>
         </div>
-        <div className="capitalize font-inter text-[13px] font-bold w-[14.2%] flex justify-center">
+        <div
+          className="capitalize font-inter text-[13px] font-bold  flex justify-center"
+          style={{ width: "calc(100%/7)" }}
+        >
           <p>wed</p>
         </div>
-        <div className="capitalize font-inter text-[13px] font-bold w-[14.2%] flex justify-center">
+        <div
+          className="capitalize font-inter text-[13px] font-bold  flex justify-center"
+          style={{ width: "calc(100%/7)" }}
+        >
           <p>thur</p>
         </div>
-        <div className="capitalize font-inter text-[13px] font-bold w-[14.2%] flex justify-center">
+        <div
+          className="capitalize font-inter text-[13px] font-bold  flex justify-center"
+          style={{ width: "calc(100%/7)" }}
+        >
           <p>fri</p>
         </div>
-        <div className="capitalize font-inter text-sm font-bold w-[14.2%] flex justify-center">
+        <div
+          className="capitalize font-inter text-sm font-bold  flex justify-center"
+          style={{ width: "calc(100%/7)" }}
+        >
           <p>sat</p>
         </div>
-        <div className="capitalize font-inter text-[13px] font-bold w-[14.2%] flex justify-center">
+        <div
+          className="capitalize font-inter text-[13px] font-bold  flex justify-center"
+          style={{ width: "calc(100%/7)" }}
+        >
           <p>sun</p>
         </div>
       </div>

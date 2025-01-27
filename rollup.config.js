@@ -26,10 +26,20 @@ export default [
       resolve(),
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
-      postcss(),
+      postcss({
+        plugins: [
+          (await import("tailwindcss")).default(),
+          (await import("autoprefixer")).default(),
+        ],
+        extract: true,
+      }),
       terser(),
     ],
-    external: ["react", "react-dom"],
+    external: [
+      "react",
+      "react-dom",
+      (id) => /stories\.(ts|tsx|js|jsx)$/.test(id),
+    ],
   },
   {
     input: "dist/esm/types/index.d.ts",
