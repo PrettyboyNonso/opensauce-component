@@ -6,6 +6,4 @@ export default {
   component: Dates,
 };
 
-export const DateStory = () => (
-  <Dates className="dark:bg-black rounded-md bg-secondary text-white text-sm py-5" />
-);
+export const DateStory = () => <Dates className="bg-yellow-500" />;

@@ -1,7 +1,6 @@
-import React from "react";
-import "../styles/tailwind.css";
+import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useState, useEffect } from "react";
+
 const Dates: React.FC<{ className?: string }> = ({ className = "" }) => {
   const [dateFuncState, setDatFunc] = useState(new Date());
   const [dayOfWeek, setDayOfWeek] = useState<number[]>([]);
@@ -12,7 +11,6 @@ const Dates: React.FC<{ className?: string }> = ({ className = "" }) => {
   const [currentYearState, setCurrentYear] = useState<number>(
     dateFuncState.getFullYear()
   );
-
   const [incrementCounterState, setIncrementCounter] = useState(
     dateFuncState.getMonth()
   );
@@ -71,15 +69,14 @@ const Dates: React.FC<{ className?: string }> = ({ className = "" }) => {
     setDatFunc(newDate);
     setCurrentYear(newDate.getFullYear());
     setIncrementCounter(incrementCounterState + 1);
-    // console.log(newDate, newDate.getFullYear());
   };
+
   const backwardClick = () => {
     let actualYear = new Date().getFullYear();
     const newDate = new Date(actualYear, incrementCounterState - 1);
     actualYear = newDate.getFullYear();
     setIncrementCounter(incrementCounterState - 1);
     setDatFunc(newDate);
-    console.log(incrementCounterState);
   };
 
   useEffect(() => {
@@ -88,21 +85,19 @@ const Dates: React.FC<{ className?: string }> = ({ className = "" }) => {
 
   const MyDate = () => {
     return (
-      <div className="flex mt-3 w-full flex-wrap ml-1">
+      <div className="flex flex-wrap w-full mt-3 ml-1">
         {dayOfWeek.map((_, index) => (
           <div
-            className="capitalize font-inter text-[13px] font-bold mb-2 flex justify-center"
-            style={{ width: "calc(100%/7)" }}
             key={index}
+            className="capitalize font-inter font-bold text-[13px] mb-2 flex justify-center w-[calc(100%/7)]"
           >
             <p></p>
           </div>
         ))}
         {days.map((day, index) => (
           <div
-            className="capitalize font-inter text-[13px] font-bold  mb-2 flex justify-center"
-            style={{ width: "calc(100%/7)" }}
             key={index}
+            className="capitalize font-inter font-bold text-[13px] mb-2 flex justify-center w-[calc(100%/7)]"
           >
             <p>{day}</p>
           </div>
@@ -113,61 +108,29 @@ const Dates: React.FC<{ className?: string }> = ({ className = "" }) => {
 
   return (
     <div
-      className={`flex py-4 flex-col items-center justify-between px-6 border-solid border ${className} min-h-64`}
-      style={{ border: `1px solid grey` }}
+      className={` flex flex-col items-center justify-between min-h-[16rem] rounded-md border py-4 ${className}`}
     >
-      <div className="flex w-full items-center justify-between">
-        <h3 className="capitalize font-black font-inter md:w-widthOne text-sm  my-auto mx-0 flex justify-center">{`${monthsOfTheYear[currentMonthState]} ${currentYearState}`}</h3>
+      <div className="flex w-full items-center justify-between px-5">
+        <h3 className="capitalize font-black font-inter text-sm text-center m-0">
+          {`${monthsOfTheYear[currentMonthState]} ${currentYearState}`}
+        </h3>
         <div className="flex gap-4 mr-3">
-          <ChevronLeft className=" cursor-pointer" onClick={backwardClick} />
-          <ChevronRight className=" cursor-pointer" onClick={forwardClick} />
+          <ChevronLeft onClick={backwardClick} className="cursor-pointer" />
+          <ChevronRight onClick={forwardClick} className="cursor-pointer" />
         </div>
       </div>
 
-      <div className="flex mt-4 w-full flex-wrap">
-        <div
-          className="capitalize font-inter text-[13px] font-bold  flex justify-center"
-          style={{ width: "calc(100%/7)" }}
-        >
-          <p>mon</p>
-        </div>
-        <div
-          className="capitalize font-inter text-[13px] font-bold  flex justify-center"
-          style={{ width: "calc(100%/7)" }}
-        >
-          <p>tue</p>
-        </div>
-        <div
-          className="capitalize font-inter text-[13px] font-bold  flex justify-center"
-          style={{ width: "calc(100%/7)" }}
-        >
-          <p>wed</p>
-        </div>
-        <div
-          className="capitalize font-inter text-[13px] font-bold  flex justify-center"
-          style={{ width: "calc(100%/7)" }}
-        >
-          <p>thur</p>
-        </div>
-        <div
-          className="capitalize font-inter text-[13px] font-bold  flex justify-center"
-          style={{ width: "calc(100%/7)" }}
-        >
-          <p>fri</p>
-        </div>
-        <div
-          className="capitalize font-inter text-sm font-bold  flex justify-center"
-          style={{ width: "calc(100%/7)" }}
-        >
-          <p>sat</p>
-        </div>
-        <div
-          className="capitalize font-inter text-[13px] font-bold  flex justify-center"
-          style={{ width: "calc(100%/7)" }}
-        >
-          <p>sun</p>
-        </div>
+      <div className="flex flex-wrap w-full mt-4">
+        {["mon", "tue", "wed", "thur", "fri", "sat", "sun"].map((day) => (
+          <div
+            key={day}
+            className="capitalize font-inter font-bold text-[13px] flex justify-center w-[calc(100%/7)]"
+          >
+            <p>{day}</p>
+          </div>
+        ))}
       </div>
+
       <MyDate />
     </div>
   );
